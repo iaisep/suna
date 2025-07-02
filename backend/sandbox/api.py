@@ -99,7 +99,7 @@ async def verify_sandbox_access(client, sandbox_id: str, user_id: Optional[str] 
     
     # Verify account membership
     if account_id:
-        account_user_result = await client.schema('basejump').from_('account_user').select('account_role').eq('user_id', user_id).eq('account_id', account_id).execute()
+        account_user_result = await client.schema('public').from_('account_user_view').select('account_role').eq('user_id', user_id).eq('account_id', account_id).execute()
         if account_user_result.data and len(account_user_result.data) > 0:
             return project_data
     
