@@ -20,7 +20,7 @@ ENV THREADS=2
 ENV WORKER_CONNECTIONS=2000
 
 ENV PYTHONPATH=/app
-EXPOSE 8000
+EXPOSE 8004
 
 # Gunicorn configuration
 CMD ["sh", "-c", "uv run gunicorn api:app \
