@@ -24,6 +24,13 @@ RUN npm install
 # Copy the frontend code
 COPY . .
 
+# Recibe las variables como argumentos en tiempo de build
+ARG NEXT_PUBLIC_SUPABASE_URL
+ARG NEXT_PUBLIC_SUPABASE_ANON_KEY
+
+# Las define como variables de entorno en el build (¡crucial para Next!)
+ENV NEXT_PUBLIC_SUPABASE_URL=${NEXT_PUBLIC_SUPABASE_URL}
+ENV NEXT_PUBLIC_SUPABASE_ANON_KEY=${NEXT_PUBLIC_SUPABASE_ANON_KEY}
 ENV NEXT_PUBLIC_VERCEL_ENV production
 
 RUN npm run build
